@@ -6,8 +6,8 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by_email(params[:email])
     if user && user.authenticate(params[:password])
-      session[:user_id] = user.user_id
-      redirect dashboard_path, notice: "You are logged in!"
+      session[:user_id] = user.id
+      redirect_to dashboard_path, notice: "You are logged in!"
     else
       render :new
     end
@@ -15,6 +15,6 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    redirect login_path, notice: "Successful logout.  Please login to come back."
+    redirect_to login_path, notice: "Successful logout.  Please login to come back."
   end
 end

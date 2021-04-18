@@ -9,7 +9,7 @@
     </ul>
 <% end %>
 
-<%= form_with do |f| %>
+<%= form_with model: @user, url: "/users" do |f| %>
     <%= f.label "Name:" %>
     <%= f.text_field :name %><br/>
     <%= f.label "E-Mail:" %>
