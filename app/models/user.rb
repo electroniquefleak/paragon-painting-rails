@@ -6,4 +6,8 @@ class User < ApplicationRecord
     has_many :tools
 
     validates :email, presence: true, uniqueness: true
+
+    def admin?
+        self.role.admin?
+    end
 end

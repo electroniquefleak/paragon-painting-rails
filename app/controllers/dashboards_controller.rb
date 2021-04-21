@@ -3,8 +3,16 @@ class DashboardsController < ApplicationController
     #before_action to get the current_users info
     before_action :require_login
 
+    #dashboard view same as projects/tools indexes (for the specifiic employee)
     def dashboard
-        #@user = current_user
+        if current_user.admin?
+            @projects = Project.all
+            @tools = Tool.all
+        else
+            @projects = current_user.projects
+            @tools = current_user.tools
+        end
+        @user = current_user
     end
 
   private
