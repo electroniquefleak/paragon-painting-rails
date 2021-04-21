@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  paint: MyString
+  brush: MyString
+  ladders: MyString
+  scaffolding: MyString
+  tarps: MyString
+  wall_tape: MyString
+
+two:
+  paint: MyString
+  brush: MyString
+  ladders: MyString
+  scaffolding: MyString
+  tarps: MyString
+  wall_tape: MyString

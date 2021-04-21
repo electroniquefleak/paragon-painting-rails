@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  location: MyString
+  start_date: 1
+  end_date: 1
+  description: MyString
+  revenue_estimate: 1
+  cost_estimate: 1
+
+two:
+  location: MyString
+  start_date: 1
+  end_date: 1
+  description: MyString
+  revenue_estimate: 1
+  cost_estimate: 1
