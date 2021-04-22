@@ -7,7 +7,4 @@ class User < ApplicationRecord
 
     validates :email, presence: true, uniqueness: true
 
-    def admin?
-        self.role.admin?
-    end
 end

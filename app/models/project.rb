@@ -1,3 +1,3 @@
 class Project < ApplicationRecord
-    has_many :users, through :
+    # has_many :users, through :
 end
