@@ -26,12 +26,9 @@ ActiveRecord::Schema.define(version: 2021_04_21_193758) do
   end
 
   create_table "tools", force: :cascade do |t|
-    t.string "paint"
-    t.string "brush"
-    t.string "ladders"
-    t.string "scaffolding"
-    t.string "tarps"
-    t.string "wall_tape"
+    t.string "item_name"
+    t.text "description"
+    t.integer "quantity"
     t.integer "project_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
