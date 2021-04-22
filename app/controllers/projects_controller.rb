@@ -6,7 +6,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = User.new(user_params)
+    @project = Project.new(project_params)
       if @project.save
         session[:project_id] = @project.project_id
         flash[:notice] = "Your project has been created."
@@ -25,5 +25,11 @@ class ProjectsController < ApplicationController
 
   def show
     #if the current_user is not the "owner" of the project OR an admin, then redirect
+  end
+
+  private
+
+  def project_params
+    params.required(:project).permit(:location, :start_date, :end_date, :description, :revenue_estimate, :cost_estimate)
   end
 end
