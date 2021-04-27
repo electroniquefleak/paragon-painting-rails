@@ -7,13 +7,12 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
-      if @project.save
-        session[:project_id] = @project.project_id
-        flash[:notice] = "Your project has been created."
-        redirect_to dashboard_path
-      else 
-        render :new
-      end
+    if @project.save
+      session[:project_id] = @project.project_id
+      flash[:notice] = "Your project has been created."
+      redirect_to dashboard_path
+    else 
+      render :new
     end
   end
 

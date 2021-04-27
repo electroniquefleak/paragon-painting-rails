@@ -12,7 +12,6 @@ class DashboardsController < ApplicationController
             @projects = current_user.projects
             @tools = current_user.tools
         end
-        @user = current_user
     end
 
   private

@@ -1,4 +1,7 @@
-<h1>Hi, <%#= @user.name %> </h1>
-<div>
-    Your current projects:
-</div>
+<h1>Hi, <%= current_user.name %> </h1>
+<h2>This is your dashboard.  Explore...</h2>
+<% if current_user.admin? %>
+    <%= render 'admin_dash' %>
+<% else %>
+    <%= render 'employee_dash' %>
+<% end %>
