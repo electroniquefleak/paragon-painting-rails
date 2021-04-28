@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_27_235500) do
+ActiveRecord::Schema.define(version: 2021_04_28_002728) do
+
+  create_table "project_tools", force: :cascade do |t|
+    t.string "warehouse_location"
+    t.integer "tool_id"
+    t.integer "project_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["project_id"], name: "index_project_tools_on_project_id"
+    t.index ["tool_id"], name: "index_project_tools_on_tool_id"
+  end
 
   create_table "projects", force: :cascade do |t|
     t.string "location"
