@@ -5,8 +5,6 @@ class CreateTools < ActiveRecord::Migration[6.1]
       t.text :description
       t.integer :quantity
       
-      t.belongs_to :project
-
       t.timestamps
     end
   end

@@ -1,14 +1,3 @@
-<h1>Already a member? Login here.</h1>
-<% if @user.errors.any? %>
-    <div> There are errors. </div> 
-    <ul>
-    <% @user.errors.full_messages.each do |message|%>
-        <li> <%= message %> </li>
-    <% end %>
-
-    </ul>
-<% end %>
-
 <%= form_with url: "/sessions" do |f| %>
     <%= f.label "E-Mail:" %>
     <%= f.email_field :email %><br/>
