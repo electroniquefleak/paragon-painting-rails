@@ -23,26 +23,25 @@ ActiveRecord::Schema.define(version: 2021_04_28_002728) do
   end
 
   create_table "projects", force: :cascade do |t|
+    t.string "name"
     t.string "location"
     t.date "start_date"
     t.date "end_date"
     t.string "description"
     t.integer "revenue_estimate"
     t.integer "cost_estimate"
-    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
   create_table "teams", force: :cascade do |t|
-    t.integer "users_id"
-    t.integer "projects_id"
+    t.integer "user_id"
+    t.integer "project_id"
     t.integer "site_manager_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["projects_id"], name: "index_teams_on_projects_id"
-    t.index ["users_id"], name: "index_teams_on_users_id"
+    t.index ["project_id"], name: "index_teams_on_project_id"
+    t.index ["user_id"], name: "index_teams_on_user_id"
   end
 
   create_table "tools", force: :cascade do |t|
@@ -62,5 +61,4 @@ ActiveRecord::Schema.define(version: 2021_04_28_002728) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "projects", "users"
 end

@@ -10,7 +10,7 @@ class DashboardsController < ApplicationController
             @tools = Tool.all
         else
             @projects = current_user.projects
-            @tools = current_user.tools
+            @teams = current_user.teams
         end
     end
 
