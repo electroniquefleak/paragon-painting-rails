@@ -39,7 +39,7 @@ class ProjectsController < ApplicationController
       :description,
       :revenue_estimate, 
       :cost_estimate,
-      #user_ids
+      user_ids: [],
       tools_attributes: [:item_name, :description, :quantity],
       project_comments_attributes: [:title, :body]
     )

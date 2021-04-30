@@ -7,6 +7,7 @@ class DashboardsController < ApplicationController
     def dashboard
         if current_user.admin?
             @projects = Project.all
+            @active_projects = Project.active
             @tools = Tool.all
         else
             @projects = current_user.projects
