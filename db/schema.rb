@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 2021_04_30_192130) do
 
   create_table "project_comments", force: :cascade do |t|
     t.string "title"
-    t.string "body"
+    t.text "body"
     t.integer "project_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

@@ -3,12 +3,14 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
+    3.times {@project.tools.build}
+    @project.project_comments.build
   end
 
   def create
     @project = Project.new(project_params)
+
     if @project.save
-      session[:project_id] = @project.project_id
       flash[:notice] = "Your project has been created."
       redirect_to dashboard_path
     else 
@@ -29,6 +31,17 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.required(:project).permit(:location, :start_date, :end_date, :description, :revenue_estimate, :cost_estimate)
+    params.required(:project).permit(
+      :name,
+      :location,
+      :start_date,
+      :end_date,
+      :description,
+      :revenue_estimate, 
+      :cost_estimate,
+      #user_ids
+      tools_attributes: [:item_name, :description, :quantity],
+      project_comments_attributes: [:title, :body]
+    )
   end
 end
