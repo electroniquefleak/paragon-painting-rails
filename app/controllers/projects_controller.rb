@@ -26,6 +26,7 @@ class ProjectsController < ApplicationController
 
   def show
     #if the current_user is not the "owner" of the project OR an admin, then redirect
+    @project = Project.find(params[:id])
   end
 
   private

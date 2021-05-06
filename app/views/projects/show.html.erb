@@ -1,1 +1,8 @@
-This is the Projects#Show page
+<h1><%= @project.name %></h1>
+<h2>All the employees on <%= @project.name %>:</h2>
+<% @project.users.each do |employee| %>
+    <h3><%= employee.name %></h3>
+<% end %>
+<% if current_user.admin? %>
+#if it is profitable?
+<% end %>

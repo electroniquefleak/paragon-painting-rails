@@ -21,4 +21,14 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     redirect_to login_path, notice: "Successful logout.  Please login to come back."
   end
+
+  def omniauth
+    user = User.from_omniauth(request.env['omniauth.auth'])
+    if user.valid?
+      session[:user_id] = user.id
+      redirect_to user_path(user)
+    else
+      redirect to '/login'
+    end
+  end
 end
