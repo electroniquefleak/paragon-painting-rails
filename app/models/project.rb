@@ -1,9 +1,9 @@
 class Project < ApplicationRecord
-    has_many :teams
-    has_many :project_tools
-    has_many :users, through: :teams
+    has_many :teams, :dependent => :destroy
+    has_many :project_tools, :dependent => :destroy
+    has_many :users, through: :teams, :dependent => :destroy
     has_many :tools, through: :project_tools, :dependent => :destroy
-    has_many :project_comments
+    has_many :project_comments, :dependent => :destroy
 
     accepts_nested_attributes_for :users, :tools, :project_comments, reject_if: :all_blank
 

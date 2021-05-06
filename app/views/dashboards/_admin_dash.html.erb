@@ -1,4 +1,41 @@
 <%= link_to "Add a new project", new_project_path, class: "btn btn-primary" %>
-<h2>All Projects:</h2>
-
-<h2>Current/Active Projects:</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 col-sm-6">
+            <h2>All Projects:</h2>
+            <% @projects.each do |project| %>
+                <div class="my-3">
+                    <%= link_to project.name, project_path(project), class: "btn btn-secondary" %>
+                </div>
+            <% end %>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <h2>Current/Active Projects:</h2>
+            <% @active_projects.each do |project| %>
+                <div class="my-3">
+                    <%= link_to project.name, project_path(project), class: "btn btn-secondary" %>
+                </div>
+            <% end %>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <h2>Past Projects:</h2>
+            <% @past_projects.each do |project| %>
+                <div class="my-3">
+                    <%= link_to project.name, project_path(project), class: "btn btn-secondary" %>
+                </div>
+            <% end %>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <h2>Future Projects:</h2>
+            <% if @future_projects.any? %>
+                <% @future_projects.each do |project| %>
+                    <div class="my-3">
+                        <%= link_to project.name, project_path(project), class: "btn btn-secondary" %>
+                    </div>
+                <% end %>
+            <% else %>
+                <h3>No future projects, yet.</h3>
+            <% end %>
+        </div>
+    </div>
+</div>

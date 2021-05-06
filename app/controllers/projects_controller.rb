@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_admin!, except: :show
+  before_action :get_project, except: [:new, :create]
 
   def new
     @project = Project.new
@@ -22,14 +23,18 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
+    @project.destroy
+    redirect_to dashboard_path, notice: "Successful Project Deletion."
   end
 
   def show
-    #if the current_user is not the "owner" of the project OR an admin, then redirect
-    @project = Project.find(params[:id])
   end
 
   private
+
+  def get_project
+    @project = Project.find(params[:id])
+  end
 
   def project_params
     params.required(:project).permit(

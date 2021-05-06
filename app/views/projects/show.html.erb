@@ -1,8 +1,36 @@
-<h1><%= @project.name %></h1>
-<h2>All the employees on <%= @project.name %>:</h2>
-<% @project.users.each do |employee| %>
-    <h3><%= employee.name %></h3>
-<% end %>
+<h1 class="text-center"><%= @project.name %></h1>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-6">
+            <h2>Project Details</h2>
+            <ul>
+                <li>Location: <%= @project.location %></li>
+                <li>Start Date: <%= @project.start_date %></li>
+                <li>End Date: <%= @project.end_date %></li>
+                <li>Description: <%= @project.description %></li>
+                <% if current_user.admin? %>
+                    <li>Revenue Estimate: $<%= @project.revenue_estimate %></li>
+                    <li>Cost Estimate: $<%= @project.cost_estimate %></li>
+                <% end %>
+            </ul>
+        </div>
+        <div class="col-sm-12 col-md-6">
+            <h2>Team Members</h2>
+            <% @project.users.each do |employee| %>
+                <h3><%= employee.name %></h3>
+            <% end %>
+        </div>
+    </div>
+    <div class="row">
+    </div>
+</div>
+
 <% if current_user.admin? %>
-#if it is profitable?
+    <div class="row flex-column align-items-center bg-light p-4">
+        <%= link_to "Edit", edit_project_path(@project), class: "btn btn-warning btn-lg w-auto" %>
+        <div class="border border-danger p-4 my-3 w-auto text-center">
+            <h3>Danger Zone: Action Can't Be Undone!</h3>
+            <%= button_to "Delete", project_path(@project), method: :delete, class: "btn btn-danger btn-lg", data: { Confirm: 'Are you sure?' } %>
+        </div>
+    </div>
 <% end %>
