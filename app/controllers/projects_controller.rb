@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_admin!, except: :show
-  before_action :get_project, except: [:new, :create]
+  before_action :set_project, except: [:new, :create]
 
   def new
     @project = Project.new
@@ -22,6 +22,16 @@ class ProjectsController < ApplicationController
   def edit
   end
 
+  def update
+    if @project.update(project_params)
+      flash[:notice]= "Project updated"
+      redirect_to dashboard_path
+    else
+      flash[:alert]= "Project update was unsuccessful."
+      render :edit
+    end
+  end
+
   def destroy
     @project.destroy
     redirect_to dashboard_path, notice: "Successful Project Deletion."
@@ -32,7 +42,7 @@ class ProjectsController < ApplicationController
 
   private
 
-  def get_project
+  def set_project
     @project = Project.find(params[:id])
   end
 
