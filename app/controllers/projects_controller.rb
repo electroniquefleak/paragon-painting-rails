@@ -5,7 +5,6 @@ class ProjectsController < ApplicationController
   def new
     @project = Project.new
     3.times {@project.tools.build}
-    @project.project_comments.build
   end
 
   def create

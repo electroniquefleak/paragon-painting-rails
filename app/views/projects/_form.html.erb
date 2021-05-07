@@ -46,20 +46,6 @@
         <hr>
         <% end %>
     </ul>
-    <h3>Comment:</h3>
-    <ul>
-        <%= f.fields_for :project_comments do |project_comments_form| %>
-        <li>
-            <%= project_comments_form.label :title %>
-            <%= project_comments_form.text_field :title %>
-        </li>
-        <li>
-            <%= project_comments_form.label :body %>
-            <%= project_comments_form.text_area :body %>
-            
-        </li>
-        <% end %>
-    </ul>
     <% if params[:action] == 'new' %>  
         <%= f.submit "Create Project!", class: "btn btn-success my-3" %>
     <% else %>

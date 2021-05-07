@@ -1,8 +1,8 @@
 <h1 class="text-center"><%= @project.name %></h1>
 <div class="container">
     <div class="row">
-        <div class="col-sm-12 col-md-6">
-            <h2>Project Details</h2>
+        <div class="col-sm-12 col-md-4">
+            <h2 class="text center">Project Details</h2>
             <ul>
                 <li>Location: <%= @project.location %></li>
                 <li>Start Date: <%= @project.start_date %></li>
@@ -14,20 +14,20 @@
                 <% end %>
             </ul>
         </div>
-        <div class="col-sm-12 col-md-6">
-            <h2>Team Members</h2>
+        <div class="col-sm-12 col-md-4">
+            <h2 class="text-center">Team Members</h2>
             <% @project.users.each do |employee| %>
-                <h3><%= employee.name %></h3>
+                <li><%= employee.name %></li>
+            <% end %>
+        </div>
+        <div class="col-sm-12 col-md-4">
+            <h2 class="text-center">Tools</h2>
+            <% @project.tools.each do |tool| %>
+                <li><%= tool.item_name %></li>
             <% end %>
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-12 col-md-6">
-            <h2>Tools</h2>
-            <% @project.tools.each do |tool| %>
-                <h3><%= tool.item_name %></h3>
-            <% end %>
-        </div>
         <div class="col-sm-12 col-md-6">
             <%= link_to "See Comment Thread", project_project_comments_path(@project), class: "btn btn-success" %>
         </div>        
