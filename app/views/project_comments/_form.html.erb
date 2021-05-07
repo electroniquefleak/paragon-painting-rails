@@ -1,0 +1,19 @@
+<% if @comment.errors.any? %>
+    <div> There are errors. </div> 
+    <ul>
+        <% @comment.errors.full_messages.each do |message|%>
+            <li> <%= message %> </li>
+        <% end %>
+    </ul>
+<% end %>
+<%= form_with model: [:project, @comment] do |f| %>
+    <%= f.label "Title:" %>
+    <%= f.text_field :title %><br/>
+    <%= f.label "Body:" %>
+    <%= f.text_area :body %><br>
+    <% if params[:action] == 'new' %>  
+        <%= f.submit "Create Comment!", class: "btn btn-success my-3" %>
+    <% else %>
+        <%= f.submit "Update", class: "btn btn-success my-3" %>
+    <% end %>
+<% end %>

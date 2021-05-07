@@ -10,7 +10,6 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
-
     if @project.save
       flash[:notice] = "Your project has been created."
       redirect_to dashboard_path
