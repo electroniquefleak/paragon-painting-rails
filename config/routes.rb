@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   resources :users, only: [:create]
   resources :sessions, only: [:create, :destroy]
   resources :projects do
-    resources :tools, except: :index
+    resources :project_comments, except: :show
+    resources :tools, only: :new
   end
   get "dashboard", to: 'dashboards#dashboard', as: "dashboard"
   root to: 'home#welcome'

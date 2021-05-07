@@ -22,6 +22,15 @@
         </div>
     </div>
     <div class="row">
+        <div class="col-sm-12 col-md-6">
+            <h2>Tools</h2>
+            <% @project.tools.each do |tool| %>
+                <h3><%= tool.item_name %></h3>
+            <% end %>
+        </div>
+        <div class="col-sm-12 col-md-6">
+            <%= link_to "See Comment Thread", project_project_comments_path(@project), class: "btn btn-success" %>
+        </div>        
     </div>
 </div>
 
