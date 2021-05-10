@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
-    3.times {@project.tools.build}
+    5.times {@project.tools.build}
   end
 
   def create
